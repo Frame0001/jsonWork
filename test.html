@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draggable Divs</title>
+  <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+</head>
+<body>
+
+<button id="saveButton">Save Positions</button>
+<button id="loadButton">Load Positions</button>
+
+<script>
+const container = document.body;
+
+// Define the initial positions for the divs
+const initialPositions = {
+  coord_lon: { left: "50px", top: "50px" },
+  coord_lat: { left: "100px", top: "100px" },
+  lant: { left: "150px", top: "150px" },
+  // ... add more initial positions as needed
+};
+
+// Initialize the positions in localStorage
+Object.keys(initialPositions).forEach(key => {
+  const position = initialPositions[key];
+  localStorage.setItem(key, JSON.stringify(position));
+});
+
+function createDraggableDiv(key, data) {
+  const div = document.createElement("div");
+  div.textContent = `${key}: ${data}`;
+  div.classList.add("draggable");
+
+  interact(div)
+    .draggable({
+      listeners: {
+        move(event) {
+          const target = event.target;
+          const x = (parseFloat(target.style.left) || 0) + event.dx;
+          const y = (parseFloat(target.style.top) || 0) + event.dy;
+
+          target.style.left = `${x}px`;
+          target.style.top = `${y}px`;
+        },
+      },
+    });
+
+  container.appendChild(div);
+}
+
+function traverseAndCreateDivs(obj, prefix = "") {
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const value = obj[key];
+      const fullKey = prefix ? `${prefix}_${key}` : key;
+
+      if (typeof value === "object" && value !== null) {
+        traverseAndCreateDivs(value, fullKey);
+      } else {
+        createDraggableDiv(fullKey, JSON.stringify(value));
+      }
+    }
+  }
+}
+
+// Event listener for the "Load" button
+document.getElementById("loadButton").addEventListener("click", function () {
+  Object.keys(initialPositions).forEach(key => {
+    const position = JSON.parse(localStorage.getItem(key));
+    const div = document.getElementById(key);
+    div.style.left = position.left;
+    div.style.top = position.top;
+  });
+
+  console.log("Positions loaded successfully");
+});
+
+// Event listener for the "Save" button
+document.getElementById("saveButton").addEventListener("click", function () {
+  document.querySelectorAll('.draggable').forEach(div => {
+    const key = div.id;
+    const position = { left: div.style.left, top: div.style.top };
+    localStorage.setItem(key, JSON.stringify(position));
+  });
+
+  console.log("Positions saved successfully");
+});
+
+// Initial creation of divs
+traverseAndCreateDivs(initialPositions);
+
+</script>
+
+</body>
+
+<style>
+    .draggable {
+      cursor: move;
+      border: 1px solid black;
+      padding: 10px;
+      position: absolute;
+    }
+
+    #saveButton,
+    #loadButton {
+      background-color: #04aa6d; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+  </style>
+</html>

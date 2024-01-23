@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customizable and Movable Divs with Save and Load Buttons</title>
+    <style>
+      .draggable {
+        cursor: move;
+        border: 1px solid black;
+        padding: 10px;
+        position: absolute;
+      }
+
+      #saveButton,
+      #loadButton {
+        background-color: #04aa6d; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <button onclick="exportPositionsToFile()" id="saveButton">Save Positions</button>
+    <input type="file" id="" style="display: none;" />
+    <button onclick="importPositionsFromFile()" id="loadButton">Load Positions</button>
+  </body>
+</html>
