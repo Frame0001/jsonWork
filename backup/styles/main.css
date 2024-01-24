@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+  }
+  .draggable {
+    background-color: #00BFA6;
+    padding: 14px 40px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px dashed #00BFA6;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: .04s;
+   }
+   
+
+   
+   .draggable:hover {
+    transition: .04s;
+    border: 2px dashed #00BFA6;
+    background-color: #fff;
+    color: #00BFA6;
+   }
+   
+   .draggable:active {
+    background-color: #87dbd0;
+   }
+   
+   
+
+
+  .draggable {
+    border: 1px solid black;
+    /* padding: 10px; */
+    position: absolute;
+    align-items: center;
+    background: #f5f5fa;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: -10px -10px 30px 0 #fff, 10px 10px 30px 0 #1d0dca17;
+    box-sizing: border-box;
+    color: #2a1f62;
+    font-family: "Cascadia Code", Consolas, Monaco, "Andale Mono",
+      "Ubuntu Mono", monospace;
+    font-size: 1rem;
+    justify-content: center;
+    line-height: 1.5rem;
+    padding: 15px;
+    text-align: left;
+    transition: 0.05s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: pre;
+    width: max-content;
+    word-break: normal;
+    word-spacing: normal;
+  }
+
+  .not-draggable {
+    cursor: default;
+  }
+
+
+  .draggable:hover {
+    background: #f8f8ff;
+    box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #200fe217;
+  }
+  body{
+    background-color: #F5F5FA;
+  }
