@@ -1,0 +1,16 @@
+<svg width="494" height="687" viewBox="0 0 494 687" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="494" height="687"/>
+<line y1="-0.5" x2="106.595" y2="-0.5" transform="matrix(-0.999999 0.00167182 0.510575 -0.859833 452.845 217.597)" stroke="black"/>
+<line x1="346.537" y1="218.186" x2="293.286" y2="255.41" stroke="black"/>
+<line x1="453.5" y1="172" x2="453.5" y2="260" stroke="black"/>
+<line y1="-0.5" x2="106.595" y2="-0.5" transform="matrix(-0.999999 0.00167182 0.510575 -0.859833 492.845 572.598)" stroke="black"/>
+<line x1="386.545" y1="573.18" x2="308.294" y2="630.125" stroke="black"/>
+<line x1="493.345" y1="528.598" x2="493.345" y2="616.598" stroke="black"/>
+<line y1="-0.5" x2="161.675" y2="-0.5" transform="matrix(-0.575229 -0.817992 0.821042 -0.570868 213 529)" stroke="black"/>
+<line x1="120" y1="397.251" x2="7.58966e-06" y2="397.251" stroke="black"/>
+<line x1="0.5" y1="353" x2="0.5" y2="440.503" stroke="black"/>
+<rect x="235.5" y="263.5" width="105" height="31" stroke="#FF0000"/>
+<rect x="190.5" y="534.5" width="105" height="31" stroke="#FF0000"/>
+<rect x="228.5" y="635.5" width="105" height="31" stroke="#FF0000"/>
+<rect x="167.5" y="1.5" width="181" height="684" rx="27.5" stroke="black" stroke-width="3"/>
+</svg>

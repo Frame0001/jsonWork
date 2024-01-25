@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
       lon: 139.01,
       lat: 35.02,
       lant: 35.02,
-      laasnt: 35.02,
+
     },
   });
 

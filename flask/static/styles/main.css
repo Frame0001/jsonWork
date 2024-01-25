@@ -72,3 +72,10 @@ button:hover {
 body {
   background-color: #f5f5fa;
 }
+.top-view {
+    position: absolute;
+    top: 100px;
+    left: 760px;
+    max-width: 320px;
+    height: auto;
+}
