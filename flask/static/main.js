@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const json = {
     coord: {
       lat: 35.02,
-      lant: 35.02,
-      laasnt: 35.02,
     },
   };
 
