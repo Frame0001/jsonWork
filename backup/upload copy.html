@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload</title>
+    <link rel="stylesheet" type="text/css" href="static/styles/index.css" />
+    <!-- External stylesheet -->
+  </head>
+  <body>
+    <div id="uploadContainer">
+      <form
+        id="uploadForm"
+        action="/success"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <input type="file" name="file" id="fileInput" style="display: none;" />
+        <div id="dropArea"><h3>Drag and Drop</h1>
+            <p>or</p>
+            <label id="customLabel" for="fileInput" style="cursor: pointer;"
+            >Choose a file</label
+          >
+          <input
+          type="submit"
+          value="Upload"
+          id="submitButton"
+          style="display: none;"
+        />
+
+
+        </div>
+
+        <!-- <label id="customLabel" for="fileInput" style="cursor: pointer;"
+          >Choose a file</label
+        > -->
+      
+    </div>
+
+    <script>
+      function handleFileSelect() {
+        var fileInput = document.getElementById("fileInput");
+        var customLabel = document.getElementById("customLabel");
+        var submitButton = document.getElementById("submitButton");
+
+        customLabel.innerText =
+          fileInput.files.length > 0
+            ? fileInput.files[0].name
+            : "Choose a file";
+        submitButton.style.display =
+          fileInput.files.length > 0 ? "inline-block" : "none";
+      }
+
+      function submitForm() {
+        var form = document.getElementById("uploadForm");
+        form.submit();
+      }
+
+      function handleDrop(event) {
+        event.preventDefault();
+
+        var fileInput = document.getElementById("fileInput");
+        var customLabel = document.getElementById("customLabel");
+        var submitButton = document.getElementById("submitButton");
+
+        var files = event.dataTransfer.files;
+
+        if (files.length > 0) {
+          fileInput.files = files;
+          customLabel.innerText = files[0].name;
+          submitButton.style.display = "inline-block";
+        }
+      }
+
+      var fileInput = document.getElementById("fileInput");
+      fileInput.addEventListener("change", handleFileSelect);
+
+      var dropArea = document.getElementById("dropArea");
+      dropArea.addEventListener("dragover", function (event) {
+        event.preventDefault();
+      });
+      dropArea.addEventListener("drop", handleDrop);
+
+      var submitButton = document.getElementById("submitButton");
+      submitButton.addEventListener("click", submitForm);
+    </script>
+    <!-- External JavaScript file -->
+  </body>
+</html>

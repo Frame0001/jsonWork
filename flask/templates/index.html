@@ -15,5 +15,11 @@
   ></script>
   <body>
     <img class="top-view " src="{{ url_for('static', filename='images/switch.svg') }}" alt="asd">
+    
+    <form action = "/success" method = "post" enctype="multipart/form-data">   
+      <input type="file" name="file" />   
+      <input type = "submit" value="Upload">   
+  </form> 
+  
   </body>
 </html>

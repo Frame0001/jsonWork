@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload</title>
+  <link rel="stylesheet" type="text/css" href="styles.css"> <!-- External stylesheet -->
+
+  <style>
+    /* Hide the file input by default */
+    input[type="file"] {
+      display: none;
+    }
+    #dropArea{
+        width: 100px;
+        height: 260px;
+        border: 1px solid green;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    function handleFileSelect() {
+      var fileInput = document.getElementById('fileInput');
+      var customLabel = document.getElementById('customLabel');
+      var submitButton = document.getElementById('submitButton');
+
+      customLabel.innerText = fileInput.files.length > 0 ? fileInput.files[0].name : 'Choose a file';
+      submitButton.style.display = fileInput.files.length > 0 ? 'inline-block' : 'none';
+    }
+
+    function submitForm() {
+      var form = document.getElementById('uploadForm');
+      form.submit();
+    }
+
+    function handleDrop(event) {
+      event.preventDefault();
+
+      var fileInput = document.getElementById('fileInput');
+      var customLabel = document.getElementById('customLabel');
+      var submitButton = document.getElementById('submitButton');
+
+      var files = event.dataTransfer.files;
+
+      if (files.length > 0) {
+        fileInput.files = files;
+        customLabel.innerText = files[0].name;
+        submitButton.style.display = 'inline-block';
+      }
+    }
+
+    // Dynamically create the form and elements inside a container div
+    var containerDiv = document.createElement('div');
+    containerDiv.id = 'uploadContainer';
+
+    var form = document.createElement('form');
+    form.id = 'uploadForm';
+    form.action = '/success';
+    form.method = 'post';
+    form.enctype = 'multipart/form-data';
+
+    var fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.name = 'file';
+    fileInput.id = 'fileInput';
+    fileInput.style.display = 'none'; // Hide the default file input
+    fileInput.addEventListener('change', handleFileSelect);
+
+    var customLabel = document.createElement('label');
+    customLabel.id = 'customLabel';
+    customLabel.textContent = 'Choose a file';
+    customLabel.htmlFor = 'fileInput'; // Associate the label with the file input
+    customLabel.style.cursor = 'pointer';
+
+    var submitButton = document.createElement('input');
+    submitButton.type = 'submit';
+    submitButton.value = 'Upload';
+    submitButton.id = 'submitButton';
+    submitButton.style.display = 'none'; // Hide the submit button by default
+    submitButton.addEventListener('click', submitForm);
+
+    // Create the drop area
+    var dropArea = document.createElement('div');
+    dropArea.id = 'dropArea';
+    dropArea.textContent = 'Drag and drop a file here or click to choose';
+    dropArea.addEventListener('dragover', function (event) { event.preventDefault(); });
+    dropArea.addEventListener('drop', handleDrop);
+
+    // Append elements to the container div
+    form.appendChild(fileInput);
+    form.appendChild(customLabel);
+    form.appendChild(submitButton);
+    containerDiv.appendChild(form);
+    containerDiv.appendChild(dropArea);
+    document.body.appendChild(containerDiv);
+  </script>
+
+</body>
+</html>
